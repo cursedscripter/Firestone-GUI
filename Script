@@ -1,6 +1,13 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Firestone GUI", "Ocean")
 
+-- Local Player
+local LocalPlayer = Window:NewTab("Local Player")
+local LocalPlayerSection = LocalPlayer:NewSection("LocalPlayer")
+LocalPlayerSection:NewSlider("Walk Speed", "Adjusts your Walk Speed", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
 -- Main Teleports
 local MainTeleports = Window:NewTab("Main Teleports")
 local MainTeleportsSection = MainTeleports:NewSection("Main Teleports")
@@ -36,7 +43,7 @@ end)
 
 -- Criminal Teleports
 local CriminalTeleports = Window:NewTab("Criminal Teleports")
-local CriminalTeleportsSection = CriminalTeleports:NewSection("Paws")
+local CriminalTeleportsSection = CriminalTeleports:NewSection("Paws (Illegal Gun Dealers)")
 CriminalTeleportsSection:NewButton("Paws 1 (Motel)", "Teleports You To The Motel (Paws 1)", function()
     loadstring(game:HttpGet('https://pastebin.com/raw/6Nuewv9x'))()
 end)
@@ -46,14 +53,19 @@ end)
 CriminalTeleportsSection:NewButton("Paws 3 (Hill Shack)", "Teleports You To The Hill Shack (Paws 3)", function()
     loadstring(game:HttpGet('https://pastebin.com/raw/VW8rMYbS'))()
 end)
-local CriminalTeleportsSection = CriminalTeleports:NewSection("Dirty Money Cleaner & Black Market Dealer")
+local CriminalTeleportsSection = CriminalTeleports:NewSection("Dirty Money Cleaner, Black Market Dealer & Storage")
 CriminalTeleportsSection:NewButton("Black Market Dealer", "Teleports You To The Black Market Dealer", function()
     local pos = Vector3.new(-1719, 23, 1302)
     local Players = game:GetService("Players")
     Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
 end)
- CriminalTeleportsSection:NewButton("Dirty Money Cleaner", "Teleports You To The Dirty Money Cleaner", function()
+CriminalTeleportsSection:NewButton("Dirty Money Cleaner", "Teleports You To The Dirty Money Cleaner", function()
     local pos = Vector3.new(2531, 35, 3057)
+    local Players = game:GetService("Players")
+    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+ end)
+ CriminalTeleportsSection:NewButton("Storage", "Teleports You To Storage", function()
+    local pos = Vector3.new(10416, 46, -2253)
     local Players = game:GetService("Players")
     Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
  end)
@@ -133,9 +145,15 @@ CriminalTeleportsSection:NewButton("Hillview Gas Station", "Teleports You To Hil
     loadstring(game:HttpGet('https://pastebin.com/raw/Jk6TCA8R'))()
 end)
 
+-- Pumpkin ESP
+local Pumpkin = Window:NewTab("Pumpkin ESP")
+local PumpkinSection = Pumpkin:NewSection("Pumpkin ESP")
+PumpkinSection:NewButton("ESP", "Toggles Pumpkin ESP (Pumpkins you haven't collected yet)", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/cursedscripter/Pumpkin-ESP/main/Script'))()
+end)
 
 -- Credits
 local Credits = Window:NewTab("Credits")
 local CreditsSection = Credits:NewSection("Credits")
-local CreditsSection = Credits:NewSection("Cursed#2860")
+local CreditsSection = Credits:NewSection("Cursed #2860")
 local CreditsSection = Credits:NewSection("Update Logs")
